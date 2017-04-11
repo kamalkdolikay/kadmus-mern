@@ -6,14 +6,60 @@ import TextField from 'material-ui/TextField';
 
 const SignUpForm = ({
     onSubmit,
-    onchange,
+    onChange,
     errors,
     user,
 }) => (
     <Card classname="container">
         <form action="/" onSubmit={onSubmit}>
             <h2 className="card-heading">Sign Up</h2>
-            {errors.summaray}
+            {errors.summaray && <p className="error message">{errors.summary}</p>}
+
+            <div className="field-name">
+                <TextField
+                    floatingLabelText="Name"
+                    name="name"
+                    errorText={errors.name}
+                    onChange={onChange}
+                    value={user.name}
+                />
+            </div>
+
+            <div className="field-name">
+                <TextField
+                    floatingLablel="Email"
+                    name="email"
+                    errorText={errors.email}
+                    onChange={onChange}
+                    value={user.email}
+                />
+            </div>
+
+            <div className="field-name">
+                <TextField
+                    floatingLablel="Password"
+                    type="password"
+                    name="password"
+                    errorText={errors.password}
+                    onChange={onChange}
+                    value={user.password}
+                />
+            </div>
+
+            <div className="button-line">
+                <RaisedButton type="submit" label="Create New Account" primary/>
+            </div>
+
+            <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText>
         </form>
     </Card>
-)
+);
+
+SignUpForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
+}
+
+export default SignUpForm;
