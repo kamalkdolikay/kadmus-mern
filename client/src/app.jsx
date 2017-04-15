@@ -4,14 +4,14 @@ import { BrowserRouter as Router, Route, Link, browserHistory } from 'react-rout
 import createReactClass from 'create-react-class'; //deprecated: supported module
 import About from './about.jsx';
 const Repos = () => (
-  <div>
+  <div> 
     <h2>hello repos</h2>
     <Link to="/repos/facebook">React</Link><br/>
     <Link to="/topics">Topics</Link><br />
     <Link to="/netflix">Netflix</Link>
 
     <Route path="/:id" component={Child}/>
-    
+
   </div>
 )
 
