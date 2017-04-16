@@ -56,121 +56,16 @@
 
 	var _reactRouterDom = __webpack_require__(182);
 
-	var _createReactClass = __webpack_require__(222);
+	var _routes = __webpack_require__(225);
 
-	var _createReactClass2 = _interopRequireDefault(_createReactClass);
-
-	var _about = __webpack_require__(224);
-
-	var _about2 = _interopRequireDefault(_about);
+	var _routes2 = _interopRequireDefault(_routes);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Repos = function Repos() {
-	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	            'h2',
-	            null,
-	            'hello repos'
-	        ),
-	        _react2.default.createElement(
-	            _reactRouterDom.Link,
-	            { to: '/repos/facebook' },
-	            'React'
-	        ),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
-	            _reactRouterDom.Link,
-	            { to: '/topics' },
-	            'Topics'
-	        ),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
-	            _reactRouterDom.Link,
-	            { to: '/netflix' },
-	            'Netflix'
-	        ),
-	        _react2.default.createElement(_reactRouterDom.Route, { path: '/:id', component: Child })
-	    );
-	}; //deprecated: supported module
-
-
-	var Repo = (0, _createReactClass2.default)({
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	                'h2',
-	                null,
-	                'hello repo'
-	            ),
-	            this.props.params,
-	            this.props.children
-	        );
-	    }
-	});
-
-	var Topics = function Topics(_ref) {
-	    var match = _ref.match;
-	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	            _reactRouterDom.Link,
-	            { to: match.url + '/rendering' },
-	            'Rendering with React'
-	        ),
-	        _react2.default.createElement(_reactRouterDom.Route, { path: match.url + '/:id', component: Topic }),
-	        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: match.url, render: function render() {
-	                return _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    'please select a topic'
-	                );
-	            } })
-	    );
-	};
-
-	var Topic = function Topic(_ref2) {
-	    var match = _ref2.match;
-	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	            'h3',
-	            null,
-	            match.parmas.id
-	        )
-	    );
-	};
-
-	var Child = function Child(_ref3) {
-	    var match = _ref3.match;
-	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	            'h3',
-	            null,
-	            'ID: ',
-	            match.params.id
-	        )
-	    );
-	};
-
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRouterDom.BrowserRouter,
-	    { history: 'browserHistory' },
-	    _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: Repos }),
-	        _react2.default.createElement(_reactRouterDom.Route, { path: '/repos/:name', component: Repo }),
-	        _react2.default.createElement(_reactRouterDom.Route, { path: '/topics', component: Topics })
-	    )
+	    null,
+	    _routes2.default
 	), document.getElementById('react-app'));
 
 /***/ }),
@@ -26152,7 +26047,7 @@
 	        _react2.default.createElement(
 	            'h2',
 	            null,
-	            'Hello KD'
+	            'Home'
 	        ),
 	        _react2.default.createElement(
 	            _reactRouterDom.Link,
@@ -26161,6 +26056,269 @@
 	        )
 	    );
 	};
+
+/***/ }),
+/* 225 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouterDom = __webpack_require__(182);
+
+	var _createReactClass = __webpack_require__(222);
+
+	var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
+	var _about = __webpack_require__(224);
+
+	var _about2 = _interopRequireDefault(_about);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; } //deprecated: supported module
+
+
+	var Repos = function Repos() {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'h2',
+	      null,
+	      'hello repos'
+	    ),
+	    _react2.default.createElement(
+	      _reactRouterDom.Link,
+	      { to: '/repos/facebook' },
+	      'React'
+	    ),
+	    _react2.default.createElement('br', null),
+	    _react2.default.createElement(
+	      _reactRouterDom.Link,
+	      { to: '/topics' },
+	      'Topics'
+	    ),
+	    _react2.default.createElement('br', null),
+	    _react2.default.createElement(
+	      _reactRouterDom.Link,
+	      { to: '/netflix' },
+	      'Netflix'
+	    ),
+	    _react2.default.createElement('br', null),
+	    _react2.default.createElement(
+	      _reactRouterDom.Link,
+	      { to: '/protected' },
+	      'Protected Page'
+	    ),
+	    _react2.default.createElement(AuthButton, null),
+	    _react2.default.createElement(_reactRouterDom.Route, { path: '/:id', component: Child })
+	  );
+	};
+
+	var Repo = (0, _createReactClass2.default)({
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'hello repo'
+	      ),
+	      this.props.params,
+	      this.props.children
+	    );
+	  }
+	});
+
+	var Topics = function Topics(_ref) {
+	  var match = _ref.match;
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      _reactRouterDom.Link,
+	      { to: match.url + '/rendering' },
+	      'Rendering with React'
+	    ),
+	    _react2.default.createElement(_reactRouterDom.Route, { path: match.url + '/:id', component: Topic }),
+	    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: match.url, render: function render() {
+	        return _react2.default.createElement(
+	          'h3',
+	          null,
+	          'please select a topic'
+	        );
+	      } })
+	  );
+	};
+
+	var Topic = function Topic(_ref2) {
+	  var match = _ref2.match;
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'h3',
+	      null,
+	      match.parmas.id
+	    )
+	  );
+	};
+
+	var Child = function Child(_ref3) {
+	  var match = _ref3.match;
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'h3',
+	      null,
+	      'ID: ',
+	      match.params.id
+	    )
+	  );
+	};
+
+	var fakeAuth = {
+	  isAuthenticated: false,
+	  authenticate: function authenticate(cb) {
+	    this.isAuthenticated = true;
+	    setTimeout(cb, 100); // fake async
+	  },
+	  signout: function signout(cb) {
+	    this.isAuthenticated = false;
+	    setTimeout(cb, 100);
+	  }
+	};
+
+	var AuthButton = (0, _reactRouterDom.withRouter)(function (_ref4) {
+	  var history = _ref4.history;
+	  return fakeAuth.isAuthenticated ? _react2.default.createElement(
+	    'p',
+	    null,
+	    'Welcome! ',
+	    _react2.default.createElement(
+	      'button',
+	      { onClick: function onClick() {
+	          fakeAuth.signout(function () {
+	            return history.push('/');
+	          });
+	        } },
+	      'Sign out'
+	    )
+	  ) : _react2.default.createElement(
+	    'p',
+	    null,
+	    'You are not logged in.'
+	  );
+	});
+
+	var PrivateRoute = function PrivateRoute(_ref5) {
+	  var Component = _ref5.component,
+	      rest = _objectWithoutProperties(_ref5, ['component']);
+
+	  return _react2.default.createElement(_reactRouterDom.Route, _extends({}, rest, { render: function render(props) {
+	      return fakeAuth.isAuthenticated ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: {
+	          pathname: '/login',
+	          state: { from: props.location }
+	        } });
+	    } }));
+	};
+
+	var Protected = function Protected() {
+	  return _react2.default.createElement(
+	    'h3',
+	    null,
+	    'Protected'
+	  );
+	};
+
+	var Login = function (_React$Component) {
+	  _inherits(Login, _React$Component);
+
+	  function Login() {
+	    var _ref6;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, Login);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref6 = Login.__proto__ || Object.getPrototypeOf(Login)).call.apply(_ref6, [this].concat(args))), _this), _this.state = {
+	      redirectTo: false
+	    }, _this.login = function () {
+	      fakeAuth.authenticate(function () {
+	        _this.setState({ redirectTo: true });
+	      });
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(Login, [{
+	    key: 'render',
+	    value: function render() {
+	      var _ref7 = this.props.location.state || { from: { pathname: '/' } },
+	          from = _ref7.from;
+
+	      var redirectTo = this.state.redirectTo;
+
+	      console.log(redirectTo);
+	      console.log("from", from);
+	      console.log("this.props", this.props);
+	      console.log("this.props.location", this.props.location);
+	      console.log("this.props.location.state", this.props.location.state);
+	      console.log(this.login);
+
+	      if (redirectTo) {
+	        return _react2.default.createElement(_reactRouterDom.Redirect, { to: from.pathname });
+	      }
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'You must log in to view the page at ',
+	          from.pathname
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this.login },
+	          'Log in'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Login;
+	}(_react2.default.Component);
+
+	module.exports = _react2.default.createElement(
+	  'div',
+	  null,
+	  _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: Repos }),
+	  _react2.default.createElement(_reactRouterDom.Route, { path: '/repos/:name', component: Repo }),
+	  _react2.default.createElement(_reactRouterDom.Route, { path: '/topics', component: Topics }),
+	  _react2.default.createElement(_reactRouterDom.Route, { path: '/login', component: Login }),
+	  _react2.default.createElement(PrivateRoute, { path: '/protected', component: Protected })
+	);
 
 /***/ })
 /******/ ]);
