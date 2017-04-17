@@ -126,7 +126,13 @@ class Login extends React.Component {
   }
 }
 
-module.exports = (
+const NoMatch = ({ location }) => (
+  <div>
+    <h3>No match for <code>{location.pathname}</code></h3>
+  </div>
+)
+
+/*module.exports = (
     <div>
         <Route path="/" component={Repos} />
         <Route path="/repos/:name" component={Repo} />
@@ -134,4 +140,21 @@ module.exports = (
         <Route path="/login" component={Login}/>
         <PrivateRoute path="/protected" component={Protected}/>
     </div>
-)
+)*/
+
+const routes = [
+  { path: '/',
+    component: Repos
+  },
+  { path: '/repos/:name',
+    component: Repo
+  },
+  { path: '/topics',
+    component: Topics
+  },
+  { path: '/protected',
+    component: Protected
+  },
+]
+
+module.exports = routes
