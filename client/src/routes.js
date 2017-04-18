@@ -2,7 +2,8 @@ import React from 'react';
 import { Route, Link, Redirect, withRouter, Switch } from 'react-router-dom';
 import createReactClass from 'create-react-class'; //deprecated: supported module
 import About from './about.jsx';
-
+import Base from './components/Base.jsx';
+import LoginFrom from './components/LoginForm.jsx';
 
 const Repos = () => (
   <div>
@@ -144,7 +145,7 @@ const NoMatch = ({ location }) => (
 
 const routes = [
   { path: '/',
-    component: Repos
+    component: Base
   },
   { path: '/repos/:name',
     component: Repo
@@ -154,6 +155,9 @@ const routes = [
   },
   { path: '/protected',
     component: Protected
+  },
+  { path: '/login',
+    component: LoginFrom
   },
 ]
 
