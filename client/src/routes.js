@@ -3,7 +3,7 @@ import { Route, Link, Redirect, withRouter, Switch } from 'react-router-dom';
 import createReactClass from 'create-react-class'; //deprecated: supported module
 import About from './about.jsx';
 import Base from './components/Base.jsx';
-import LoginFrom from './components/LoginForm.jsx';
+import LoginForm from './components/LoginForm.jsx';
 
 const Repos = () => (
   <div>
@@ -157,7 +157,7 @@ const routes = [
     component: Protected
   },
   { path: '/login',
-    component: LoginFrom
+    component: LoginForm
   },
 ]
 

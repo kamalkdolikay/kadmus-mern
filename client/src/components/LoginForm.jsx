@@ -1,5 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class'; //deprecated: supported module
+import { Jumbotron, Button} from 'react-bootstrap';
 
 class NameForm extends React.Component{
     constructor(props){
@@ -45,13 +46,19 @@ class NameForm extends React.Component{
 
     render(){
         return(
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Name:
-                    <input type="text" value={this.state.value} onChange={this.handleChange} />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+            <div>
+                <Jumbotron>
+                    <center>
+                    <h1>Hello, world!</h1>
+                    <form onSubmit={this.handleSubmit}>
+                        <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="username" /><br />
+                        <input type="password" placeholder="password" /><br />
+                        <Button bsStyle="primary" type="submit">Submit</Button>
+                    </form>
+                    <p></p>
+                    </center>
+                </Jumbotron>
+            </div>
         )
     }
 }
