@@ -26479,33 +26479,6 @@
 	                    )
 	                )
 	            )
-	        ),
-	        _react2.default.createElement(
-	            _reactBootstrap.Jumbotron,
-	            null,
-	            _react2.default.createElement(
-	                'center',
-	                null,
-	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'Hello, world!'
-	                ),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.'
-	                ),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    _react2.default.createElement(
-	                        _reactBootstrap.Button,
-	                        { bsStyle: 'primary' },
-	                        'Learn more'
-	                    )
-	                )
-	            )
 	        )
 	    );
 	};
@@ -45630,15 +45603,16 @@
 
 	var _createReactClass2 = _interopRequireDefault(_createReactClass);
 
+	var _reactBootstrap = __webpack_require__(227);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //deprecated: supported module
 
-	//deprecated: supported module
 
 	var NameForm = function (_React$Component) {
 	    _inherits(NameForm, _React$Component);
@@ -45695,15 +45669,35 @@
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                'form',
-	                { onSubmit: this.handleSubmit },
+	                'div',
+	                null,
 	                _react2.default.createElement(
-	                    'label',
+	                    _reactBootstrap.Jumbotron,
 	                    null,
-	                    'Name:',
-	                    _react2.default.createElement('input', { type: 'text', value: this.state.value, onChange: this.handleChange })
-	                ),
-	                _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+	                    _react2.default.createElement(
+	                        'center',
+	                        null,
+	                        _react2.default.createElement(
+	                            'h1',
+	                            null,
+	                            'Hello, world!'
+	                        ),
+	                        _react2.default.createElement(
+	                            'form',
+	                            { onSubmit: this.handleSubmit },
+	                            _react2.default.createElement('input', { type: 'text', value: this.state.value, onChange: this.handleChange, placeholder: 'username' }),
+	                            _react2.default.createElement('br', null),
+	                            _react2.default.createElement('input', { type: 'password', placeholder: 'password' }),
+	                            _react2.default.createElement('br', null),
+	                            _react2.default.createElement(
+	                                _reactBootstrap.Button,
+	                                { bsStyle: 'primary', type: 'submit' },
+	                                'Submit'
+	                            )
+	                        ),
+	                        _react2.default.createElement('p', null)
+	                    )
+	                )
 	            );
 	        }
 	    }]);
