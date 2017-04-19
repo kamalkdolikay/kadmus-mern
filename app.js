@@ -7,6 +7,13 @@ import logger from 'morgan';
 import path from 'path';
 import { middleware as stylusMiddleware } from 'stylus';
 import index from './routes/index';
+import mongoose from 'mongoose';
+import passport from "passport";
+import session from 'express-session';
+import es6 from 'es6-promise';
+
+//mongoose.Promise = es6.Promise;
+mongoose.connect('mongodb://localhost/test')
 
 const app = express();
 const debug = Debug('kadmus-mern:app');
@@ -23,6 +30,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(cookieParser());
 app.use(stylusMiddleware(path.join(__dirname, 'public')));

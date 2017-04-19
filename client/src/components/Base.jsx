@@ -26,7 +26,7 @@ const Base = ({ children }) => (
             </Nav>
             <Nav pullRight>
                 <NavItem eventKey={1}><Link to="/login">Log In</Link></NavItem>
-                <NavItem eventKey={2} href="#">Signup</NavItem>
+                <NavItem eventKey={2}><Link to="/signup">Signup</Link></NavItem>
             </Nav>
             </Navbar.Collapse>
         </Navbar>

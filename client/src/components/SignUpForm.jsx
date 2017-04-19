@@ -1,39 +1,38 @@
-import React from 'react';
-import createReactClass from 'create-react-class'; //deprecated: supported module
-import { Jumbotron, Button} from 'react-bootstrap';
+import React from 'react'
+import { Jumbotron ,Button } from 'react-bootstrap';
 
-class LoginForm extends React.Component{
+class SignUpForm extends React.Component {
     constructor(props){
         super(props)
-        this.state = {name: ''};
+        this.state = {value: ''}
 
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-    
+
     handleChange(event){
-        this.setState({name: event.target.value});
+        this.setState({value: event.target.value})
     }
 
     handleSubmit(event){
-        //alert(this.state.value);
-        event.preventDefault();
-        const name = this.state.name;
-        const pass = '123'
-        const formData = `user=${name}&password=${pass}`;
+        event.preventDefault()
+        const name = this.state.value
+        const formData = `name=${name}`
 
         const xhr = new XMLHttpRequest()
-        xhr.open('post', '/login')
+        xhr.open('post','/signup')
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
         xhr.responseType = 'json'
         xhr.addEventListener('load', () => {
+            console.log("xhr",xhr)
             if(xhr.status === 200){
                 this.setState({
-                    errors: {}
+                    error: {}
                 })
-                console.log("the form is valid");
+                console.log("the form is valid")
             }
             else{
+                console.log("err", xhr)
                 const errors = xhr.response.errors ? xhr.response.errors : {}
                 errors.summary = xhr.response.message;
 
@@ -50,18 +49,18 @@ class LoginForm extends React.Component{
             <div>
                 <Jumbotron>
                     <center>
-                    <h1>Login</h1>
+                    <h1>Signup</h1>
                     <form onSubmit={this.handleSubmit}>
-                        <input type="text" value={this.state.name} onChange={this.handleChange} placeholder="username" /><br />
+                        <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="username" /><br />
                         <input type="password" placeholder="password" /><br />
                         <Button bsStyle="primary" type="submit">Submit</Button>
                     </form>
                     <p></p>
                     </center>
                 </Jumbotron>
-            </div>
+            </div>   
         )
     }
 }
 
-export default LoginForm
+export default SignUpForm

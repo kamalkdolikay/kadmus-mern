@@ -25310,6 +25310,10 @@
 
 	var _LoginForm2 = _interopRequireDefault(_LoginForm);
 
+	var _SignUpForm = __webpack_require__(479);
+
+	var _SignUpForm2 = _interopRequireDefault(_SignUpForm);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25567,16 +25571,24 @@
 	    </div>
 	)*/
 
-	var routes = [{ path: '/',
+	var routes = [{
+	  path: '/',
 	  component: _Base2.default
-	}, { path: '/repos/:name',
+	}, {
+	  path: '/repos/:name',
 	  component: Repo
-	}, { path: '/topics',
+	}, {
+	  path: '/topics',
 	  component: Topics
-	}, { path: '/protected',
+	}, {
+	  path: '/protected',
 	  component: Protected
-	}, { path: '/login',
+	}, {
+	  path: '/login',
 	  component: _LoginForm2.default
+	}, {
+	  path: '/signup',
+	  component: _SignUpForm2.default
 	}];
 
 	module.exports = routes;
@@ -26474,8 +26486,12 @@
 	                    ),
 	                    _react2.default.createElement(
 	                        _reactBootstrap.NavItem,
-	                        { eventKey: 2, href: '#' },
-	                        'Signup'
+	                        { eventKey: 2 },
+	                        _react2.default.createElement(
+	                            _reactRouterDom.Link,
+	                            { to: '/signup' },
+	                            'Signup'
+	                        )
 	                    )
 	                )
 	            )
@@ -45614,25 +45630,25 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //deprecated: supported module
 
 
-	var NameForm = function (_React$Component) {
-	    _inherits(NameForm, _React$Component);
+	var LoginForm = function (_React$Component) {
+	    _inherits(LoginForm, _React$Component);
 
-	    function NameForm(props) {
-	        _classCallCheck(this, NameForm);
+	    function LoginForm(props) {
+	        _classCallCheck(this, LoginForm);
 
-	        var _this = _possibleConstructorReturn(this, (NameForm.__proto__ || Object.getPrototypeOf(NameForm)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (LoginForm.__proto__ || Object.getPrototypeOf(LoginForm)).call(this, props));
 
-	        _this.state = { value: '' };
+	        _this.state = { name: '' };
 
 	        _this.handleChange = _this.handleChange.bind(_this);
 	        _this.handleSubmit = _this.handleSubmit.bind(_this);
 	        return _this;
 	    }
 
-	    _createClass(NameForm, [{
+	    _createClass(LoginForm, [{
 	        key: 'handleChange',
 	        value: function handleChange(event) {
-	            this.setState({ value: event.target.value });
+	            this.setState({ name: event.target.value });
 	        }
 	    }, {
 	        key: 'handleSubmit',
@@ -45641,8 +45657,9 @@
 
 	            //alert(this.state.value);
 	            event.preventDefault();
-	            var name = this.state.value;
-	            var formData = 'name=' + name;
+	            var name = this.state.name;
+	            var pass = '123';
+	            var formData = 'user=' + name + '&password=' + pass;
 
 	            var xhr = new XMLHttpRequest();
 	            xhr.open('post', '/login');
@@ -45680,7 +45697,127 @@
 	                        _react2.default.createElement(
 	                            'h1',
 	                            null,
-	                            'Hello, world!'
+	                            'Login'
+	                        ),
+	                        _react2.default.createElement(
+	                            'form',
+	                            { onSubmit: this.handleSubmit },
+	                            _react2.default.createElement('input', { type: 'text', value: this.state.name, onChange: this.handleChange, placeholder: 'username' }),
+	                            _react2.default.createElement('br', null),
+	                            _react2.default.createElement('input', { type: 'password', placeholder: 'password' }),
+	                            _react2.default.createElement('br', null),
+	                            _react2.default.createElement(
+	                                _reactBootstrap.Button,
+	                                { bsStyle: 'primary', type: 'submit' },
+	                                'Submit'
+	                            )
+	                        ),
+	                        _react2.default.createElement('p', null)
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return LoginForm;
+	}(_react2.default.Component);
+
+	exports.default = LoginForm;
+
+/***/ }),
+/* 479 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(227);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var SignUpForm = function (_React$Component) {
+	    _inherits(SignUpForm, _React$Component);
+
+	    function SignUpForm(props) {
+	        _classCallCheck(this, SignUpForm);
+
+	        var _this = _possibleConstructorReturn(this, (SignUpForm.__proto__ || Object.getPrototypeOf(SignUpForm)).call(this, props));
+
+	        _this.state = { value: '' };
+
+	        _this.handleChange = _this.handleChange.bind(_this);
+	        _this.handleSubmit = _this.handleSubmit.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(SignUpForm, [{
+	        key: 'handleChange',
+	        value: function handleChange(event) {
+	            this.setState({ value: event.target.value });
+	        }
+	    }, {
+	        key: 'handleSubmit',
+	        value: function handleSubmit(event) {
+	            var _this2 = this;
+
+	            event.preventDefault();
+	            var name = this.state.value;
+	            var formData = 'name=' + name;
+
+	            var xhr = new XMLHttpRequest();
+	            xhr.open('post', '/signup');
+	            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	            xhr.responseType = 'json';
+	            xhr.addEventListener('load', function () {
+	                console.log("xhr", xhr);
+	                if (xhr.status === 200) {
+	                    _this2.setState({
+	                        error: {}
+	                    });
+	                    console.log("the form is valid");
+	                } else {
+	                    console.log("err", xhr);
+	                    var errors = xhr.response.errors ? xhr.response.errors : {};
+	                    errors.summary = xhr.response.message;
+
+	                    _this2.setState({
+	                        errors: errors
+	                    });
+	                }
+	            });
+	            xhr.send(formData);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    _reactBootstrap.Jumbotron,
+	                    null,
+	                    _react2.default.createElement(
+	                        'center',
+	                        null,
+	                        _react2.default.createElement(
+	                            'h1',
+	                            null,
+	                            'Signup'
 	                        ),
 	                        _react2.default.createElement(
 	                            'form',
@@ -45702,10 +45839,10 @@
 	        }
 	    }]);
 
-	    return NameForm;
+	    return SignUpForm;
 	}(_react2.default.Component);
 
-	exports.default = NameForm;
+	exports.default = SignUpForm;
 
 /***/ })
 /******/ ]);

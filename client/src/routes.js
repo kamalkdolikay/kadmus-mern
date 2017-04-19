@@ -4,6 +4,7 @@ import createReactClass from 'create-react-class'; //deprecated: supported modul
 import About from './about.jsx';
 import Base from './components/Base.jsx';
 import LoginForm from './components/LoginForm.jsx';
+import SignUpForm from './components/SignUpForm.jsx';
 
 const Repos = () => (
   <div>
@@ -144,21 +145,30 @@ const NoMatch = ({ location }) => (
 )*/
 
 const routes = [
-  { path: '/',
+  {
+    path: '/',
     component: Base
   },
-  { path: '/repos/:name',
+  {
+    path: '/repos/:name',
     component: Repo
   },
-  { path: '/topics',
+  {
+    path: '/topics',
     component: Topics
   },
-  { path: '/protected',
+  {
+    path: '/protected',
     component: Protected
   },
-  { path: '/login',
+  {
+    path: '/login',
     component: LoginForm
   },
+  {
+    path:'/signup',
+    component: SignUpForm
+  }
 ]
 
 module.exports = routes
