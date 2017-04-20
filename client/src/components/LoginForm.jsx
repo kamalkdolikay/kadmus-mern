@@ -5,22 +5,34 @@ import { Jumbotron, Button} from 'react-bootstrap';
 class LoginForm extends React.Component{
     constructor(props){
         super(props)
-        this.state = {name: ''};
+        this.state = {
+            
+            user:{
+                name: '',
+                password: ''
+            }
+        };
 
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     
     handleChange(event){
-        this.setState({name: event.target.value});
+        const field = event.target.name;
+        const user = this.state.user;
+        user[field] = event.target.value;
+
+        this.setState({
+        user
+        });
     }
 
     handleSubmit(event){
         //alert(this.state.value);
         event.preventDefault();
-        const name = this.state.name;
-        const pass = '123'
-        const formData = `user=${name}&password=${pass}`;
+        const user = encodeURIComponent(this.state.user.name);
+        const password = encodeURIComponent(this.state.user.password);
+        const formData = `user=${user}&password=${password}`;
 
         const xhr = new XMLHttpRequest()
         xhr.open('post', '/login')
@@ -52,8 +64,8 @@ class LoginForm extends React.Component{
                     <center>
                     <h1>Login</h1>
                     <form onSubmit={this.handleSubmit}>
-                        <input type="text" value={this.state.name} onChange={this.handleChange} placeholder="username" /><br />
-                        <input type="password" placeholder="password" /><br />
+                        <input type="text" name="name" value={this.state.user.name} onChange={this.handleChange} placeholder="username" /><br />
+                        <input type="password" name="password" value={this.state.user.password} onChange={this.handleChange} placeholder="password"/><br />
                         <Button bsStyle="primary" type="submit">Submit</Button>
                     </form>
                     <p></p>
