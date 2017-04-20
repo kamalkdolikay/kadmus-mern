@@ -3,7 +3,7 @@ import { Route, Link, Redirect, withRouter, Switch } from 'react-router-dom';
 import createReactClass from 'create-react-class'; //deprecated: supported module
 import About from './about.jsx';
 import Base from './components/Base.jsx';
-import LoginForm from './components/LoginForm.jsx';
+import LoginPage from './containers/LoginPage.jsx';
 import SignUpForm from './components/SignUpForm.jsx';
 
 const Repos = () => (
@@ -163,7 +163,7 @@ const routes = [
   },
   {
     path: '/login',
-    component: LoginForm
+    component: LoginPage
   },
   {
     path:'/signup',
