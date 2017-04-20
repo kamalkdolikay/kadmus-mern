@@ -25306,9 +25306,9 @@
 
 	var _Base2 = _interopRequireDefault(_Base);
 
-	var _LoginForm = __webpack_require__(478);
+	var _LoginPage = __webpack_require__(480);
 
-	var _LoginForm2 = _interopRequireDefault(_LoginForm);
+	var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
 	var _SignUpForm = __webpack_require__(479);
 
@@ -25585,7 +25585,7 @@
 	  component: Protected
 	}, {
 	  path: '/login',
-	  component: _LoginForm2.default
+	  component: _LoginPage2.default
 	}, {
 	  path: '/signup',
 	  component: _SignUpForm2.default
@@ -45609,8 +45609,6 @@
 	    value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -45623,117 +45621,44 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //deprecated: supported module
-
-
-	var LoginForm = function (_React$Component) {
-	    _inherits(LoginForm, _React$Component);
-
-	    function LoginForm(props) {
-	        _classCallCheck(this, LoginForm);
-
-	        var _this = _possibleConstructorReturn(this, (LoginForm.__proto__ || Object.getPrototypeOf(LoginForm)).call(this, props));
-
-	        _this.state = {
-
-	            user: {
-	                name: '',
-	                password: ''
-	            }
-	        };
-
-	        _this.handleChange = _this.handleChange.bind(_this);
-	        _this.handleSubmit = _this.handleSubmit.bind(_this);
-	        return _this;
-	    }
-
-	    _createClass(LoginForm, [{
-	        key: 'handleChange',
-	        value: function handleChange(event) {
-	            var field = event.target.name;
-	            var user = this.state.user;
-	            user[field] = event.target.value;
-
-	            this.setState({
-	                user: user
-	            });
-	        }
-	    }, {
-	        key: 'handleSubmit',
-	        value: function handleSubmit(event) {
-	            var _this2 = this;
-
-	            //alert(this.state.value);
-	            event.preventDefault();
-	            var user = encodeURIComponent(this.state.user.name);
-	            var password = encodeURIComponent(this.state.user.password);
-	            var formData = 'user=' + user + '&password=' + password;
-
-	            var xhr = new XMLHttpRequest();
-	            xhr.open('post', '/login');
-	            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-	            xhr.responseType = 'json';
-	            xhr.addEventListener('load', function () {
-	                if (xhr.status === 200) {
-	                    _this2.setState({
-	                        errors: {}
-	                    });
-	                    console.log("the form is valid");
-	                } else {
-	                    var errors = xhr.response.errors ? xhr.response.errors : {};
-	                    errors.summary = xhr.response.message;
-
-	                    _this2.setState({
-	                        errors: errors
-	                    });
-	                }
-	            });
-	            xhr.send(formData);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
+	var LoginForm = function LoginForm(_ref) {
+	    var onSubmit = _ref.onSubmit,
+	        onChange = _ref.onChange,
+	        user = _ref.user,
+	        errors = _ref.errors;
+	    return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	            _reactBootstrap.Jumbotron,
+	            null,
+	            _react2.default.createElement(
+	                'center',
 	                null,
 	                _react2.default.createElement(
-	                    _reactBootstrap.Jumbotron,
+	                    'h1',
 	                    null,
+	                    'Login'
+	                ),
+	                errors,
+	                _react2.default.createElement(
+	                    'form',
+	                    { onSubmit: onSubmit },
+	                    _react2.default.createElement('input', { type: 'text', name: 'name', value: user.name, onChange: onChange, placeholder: 'username' }),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('input', { type: 'password', name: 'password', value: user.password, onChange: onChange, placeholder: 'password' }),
+	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(
-	                        'center',
-	                        null,
-	                        _react2.default.createElement(
-	                            'h1',
-	                            null,
-	                            'Login'
-	                        ),
-	                        _react2.default.createElement(
-	                            'form',
-	                            { onSubmit: this.handleSubmit },
-	                            _react2.default.createElement('input', { type: 'text', name: 'name', value: this.state.user.name, onChange: this.handleChange, placeholder: 'username' }),
-	                            _react2.default.createElement('br', null),
-	                            _react2.default.createElement('input', { type: 'password', name: 'password', value: this.state.user.password, onChange: this.handleChange, placeholder: 'password' }),
-	                            _react2.default.createElement('br', null),
-	                            _react2.default.createElement(
-	                                _reactBootstrap.Button,
-	                                { bsStyle: 'primary', type: 'submit' },
-	                                'Submit'
-	                            )
-	                        ),
-	                        _react2.default.createElement('p', null)
+	                        _reactBootstrap.Button,
+	                        { bsStyle: 'primary', type: 'submit' },
+	                        'Submit'
 	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return LoginForm;
-	}(_react2.default.Component);
-
+	                ),
+	                _react2.default.createElement('p', null)
+	            )
+	        )
+	    );
+	}; //deprecated: supported module
 	exports.default = LoginForm;
 
 /***/ }),
@@ -45855,6 +45780,124 @@
 	}(_react2.default.Component);
 
 	exports.default = SignUpForm;
+
+/***/ }),
+/* 480 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _createReactClass = __webpack_require__(223);
+
+	var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
+	var _reactBootstrap = __webpack_require__(227);
+
+	var _LoginForm = __webpack_require__(478);
+
+	var _LoginForm2 = _interopRequireDefault(_LoginForm);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //deprecated: supported module
+
+
+	var LoginPage = function (_React$Component) {
+	    _inherits(LoginPage, _React$Component);
+
+	    function LoginPage(props) {
+	        _classCallCheck(this, LoginPage);
+
+	        var _this = _possibleConstructorReturn(this, (LoginPage.__proto__ || Object.getPrototypeOf(LoginPage)).call(this, props));
+
+	        _this.state = {
+	            errors: '',
+	            user: {
+	                name: '',
+	                password: ''
+	            }
+	        };
+
+	        _this.handleChange = _this.handleChange.bind(_this);
+	        _this.handleSubmit = _this.handleSubmit.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(LoginPage, [{
+	        key: 'handleChange',
+	        value: function handleChange(event) {
+	            var field = event.target.name;
+	            var user = this.state.user;
+	            user[field] = event.target.value;
+
+	            this.setState({
+	                user: user
+	            });
+	        }
+	    }, {
+	        key: 'handleSubmit',
+	        value: function handleSubmit(event) {
+	            var _this2 = this;
+
+	            //alert(this.state.value);
+	            event.preventDefault();
+	            var user = encodeURIComponent(this.state.user.name);
+	            var password = encodeURIComponent(this.state.user.password);
+	            var formData = 'user=' + user + '&password=' + password;
+
+	            var xhr = new XMLHttpRequest();
+	            xhr.open('post', '/login');
+	            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	            xhr.responseType = 'json';
+	            xhr.addEventListener('load', function () {
+	                console.log("xhr", xhr);
+	                if (xhr.status === 200) {
+	                    _this2.setState({
+	                        errors: ''
+	                    });
+	                    console.log("the form is valid");
+	                } else {
+	                    console.log("xhr2", xhr.response.message);
+	                    //const errors = xhr.response.errors ? xhr.response.errors : {}
+
+
+	                    _this2.setState({
+	                        errors: xhr.response.message
+	                    });
+	                }
+	            });
+	            xhr.send(formData);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(_LoginForm2.default, {
+	                onSubmit: this.handleSubmit,
+	                onChange: this.handleChange,
+	                user: this.state.user,
+	                errors: this.state.errors
+	            });
+	        }
+	    }]);
+
+	    return LoginPage;
+	}(_react2.default.Component);
+
+	exports.default = LoginPage;
 
 /***/ })
 /******/ ]);
