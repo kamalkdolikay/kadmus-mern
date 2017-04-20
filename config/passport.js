@@ -15,7 +15,7 @@ module.exports = passport.use('login', new LocalStrategy({
         User.findOne({ username: username }, function(err, user) {
             if (err) { return done(err); }
             if (!user) {
-                return done(null, false, { alert: 'Incorrect username' });
+                return done(null, false, { message: 'Incorrect username' });
             }
             if (user.password != password) {
                 return done(null, false, { message: 'Incorrect password.' });
