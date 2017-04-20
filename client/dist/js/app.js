@@ -45638,7 +45638,13 @@
 
 	        var _this = _possibleConstructorReturn(this, (LoginForm.__proto__ || Object.getPrototypeOf(LoginForm)).call(this, props));
 
-	        _this.state = { name: '' };
+	        _this.state = {
+
+	            user: {
+	                name: '',
+	                password: ''
+	            }
+	        };
 
 	        _this.handleChange = _this.handleChange.bind(_this);
 	        _this.handleSubmit = _this.handleSubmit.bind(_this);
@@ -45648,7 +45654,13 @@
 	    _createClass(LoginForm, [{
 	        key: 'handleChange',
 	        value: function handleChange(event) {
-	            this.setState({ name: event.target.value });
+	            var field = event.target.name;
+	            var user = this.state.user;
+	            user[field] = event.target.value;
+
+	            this.setState({
+	                user: user
+	            });
 	        }
 	    }, {
 	        key: 'handleSubmit',
@@ -45657,9 +45669,9 @@
 
 	            //alert(this.state.value);
 	            event.preventDefault();
-	            var name = this.state.name;
-	            var pass = '123';
-	            var formData = 'user=' + name + '&password=' + pass;
+	            var user = encodeURIComponent(this.state.user.name);
+	            var password = encodeURIComponent(this.state.user.password);
+	            var formData = 'user=' + user + '&password=' + password;
 
 	            var xhr = new XMLHttpRequest();
 	            xhr.open('post', '/login');
@@ -45702,9 +45714,9 @@
 	                        _react2.default.createElement(
 	                            'form',
 	                            { onSubmit: this.handleSubmit },
-	                            _react2.default.createElement('input', { type: 'text', value: this.state.name, onChange: this.handleChange, placeholder: 'username' }),
+	                            _react2.default.createElement('input', { type: 'text', name: 'name', value: this.state.user.name, onChange: this.handleChange, placeholder: 'username' }),
 	                            _react2.default.createElement('br', null),
-	                            _react2.default.createElement('input', { type: 'password', placeholder: 'password' }),
+	                            _react2.default.createElement('input', { type: 'password', name: 'password', value: this.state.user.password, onChange: this.handleChange, placeholder: 'password' }),
 	                            _react2.default.createElement('br', null),
 	                            _react2.default.createElement(
 	                                _reactBootstrap.Button,
