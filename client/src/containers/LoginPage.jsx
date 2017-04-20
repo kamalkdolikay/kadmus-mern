@@ -43,7 +43,7 @@ class LoginPage extends React.Component{
             console.log("xhr", xhr)
             if(xhr.status === 200){
                 this.setState({
-                    errors: ''
+                    errors: 'logged in'
                 })
                 console.log("the form is valid");
             }
