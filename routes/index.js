@@ -1,7 +1,32 @@
 import express from 'express';
-//import User from '../models/User.js';
 import passport from '../config/passport.js'
 const router = express.Router();
+
+function validateLoginForm(payload){
+    const errors = {};
+    let isFormValid = true;
+    let message = '';
+
+    if(!payload || typeof payload.user !== 'string' || payload.user.trim().length === 0){
+        isFormValid = false
+        errors.user = 'Please provide your name'
+    }
+
+    if(!payload || typeof payload.password !== 'string' || payload.password.trim().length === 0){
+        isFormValid = false
+        errors.password = 'Please provide your password'
+    }
+
+    if(!isFormValid){
+        message = 'Check the form for errors'
+    }
+
+    return {
+        success: isFormValid,
+        message,
+        errors
+    }
+}
 
 /* GET index page. */
 router.get('/', (req, res, next) => {
@@ -18,16 +43,19 @@ router.get('/posts', (req,res)=>{
 })
 
 router.post('/login', function(req, res, next) {
-    console.log(req.body)
-
+    const validationResult = validateLoginForm(req.body)
+    if(!validationResult.success){
+        return res.status(400).json({
+            success: false,
+            message: validationResult.message,
+            errors: validationResult.errors
+        })
+    }
     passport.authenticate('login', function(err, user, info) {
         if (err) { return next(err); }
-        console.log("err",err)
-        console.log("user",user)
-        console.log("info",info)
 
         if (user) {
-            return res.json({ token: "user" });
+            return res.json({ token: user.generateJWT() });
         } else {
             return res.status(401).json(info);
         }
