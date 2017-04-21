@@ -9,11 +9,9 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.get('/posts', (req,res)=>{
-    User.find({}, function(err,docs){
-        console.log(docs)
-        res.send(docs)
-    })
+router.get('/token', (req,res)=>{
+    //const token = req.headers.authorization.split(' ')[1];
+    res.send("token",req.headers)
 })
 
 router.post('/login', function(req, res, next) {
