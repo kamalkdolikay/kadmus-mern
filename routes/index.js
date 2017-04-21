@@ -1,34 +1,8 @@
 import express from 'express';
-import passport from '../config/passport.js'
+import passport from '../config/passport.js';
 const router = express.Router();
+import validationResult from '../config/validation.js'
 
-function validateLoginForm(payload){
-    const errors = {};
-    let isFormValid = true;
-    let message = '';
-
-    if(!payload || typeof payload.user !== 'string' || payload.user.trim().length === 0){
-        isFormValid = false
-        errors.user = 'Please provide your name'
-    }
-
-    if(!payload || typeof payload.password !== 'string' || payload.password.trim().length === 0){
-        isFormValid = false
-        errors.password = 'Please provide your password'
-    }
-
-    if(!isFormValid){
-        message = 'Check the form for errors'
-    }
-
-    return {
-        success: isFormValid,
-        message,
-        errors
-    }
-}
-
-/* GET index page. */
 router.get('/', (req, res, next) => {
     res.render('index', {
         title: 'React'
@@ -43,12 +17,12 @@ router.get('/posts', (req,res)=>{
 })
 
 router.post('/login', function(req, res, next) {
-    const validationResult = validateLoginForm(req.body)
-    if(!validationResult.success){
+    const validate = validationResult(req.body)
+    if(!validate.success){
         return res.status(400).json({
             success: false,
-            message: validationResult.message,
-            errors: validationResult.errors
+            message: validate.message,
+            errors: validate.errors
         })
     }
     passport.authenticate('login', function(err, user, info) {
