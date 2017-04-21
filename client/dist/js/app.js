@@ -45625,6 +45625,10 @@
 
 	var _LoginForm2 = _interopRequireDefault(_LoginForm);
 
+	var _Auth = __webpack_require__(481);
+
+	var _Auth2 = _interopRequireDefault(_Auth);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -45682,14 +45686,18 @@
 	            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	            xhr.responseType = 'json';
 	            xhr.addEventListener('load', function () {
-	                console.log("xhr", xhr);
+	                console.log("xhr", xhr.response.token);
 	                if (xhr.status === 200) {
 	                    _this2.setState({
 	                        errors: 'logged in'
 	                    });
+
+	                    _Auth2.default.authenticateUser(xhr.response.token);
+	                    console.log(_Auth2.default.getToken());
+
 	                    console.log("the form is valid");
 	                } else {
-	                    console.log("xhr2", xhr.response.message);
+	                    //console.log("xhr2", xhr.response.message)
 	                    if (xhr.response.message == 'Incorrect username') {
 	                        _this2.setState({ errors: xhr.response.message });
 	                    }
@@ -45904,6 +45912,52 @@
 	}(_react2.default.Component);
 
 	exports.default = SignUpForm;
+
+/***/ }),
+/* 481 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Auth = function () {
+	  function Auth() {
+	    _classCallCheck(this, Auth);
+	  }
+
+	  _createClass(Auth, null, [{
+	    key: 'authenticateUser',
+	    value: function authenticateUser(token) {
+	      localStorage.setItem('token', token);
+	    }
+	  }, {
+	    key: 'isUserAuthenticated',
+	    value: function isUserAuthenticated() {
+	      return localStorage.getItem('token') !== null;
+	    }
+	  }, {
+	    key: 'deauthenticateUser',
+	    value: function deauthenticateUser() {
+	      localStorage.removeItem('token');
+	    }
+	  }, {
+	    key: 'getToken',
+	    value: function getToken() {
+	      return localStorage.getItem('token');
+	    }
+	  }]);
+
+	  return Auth;
+	}();
+
+	exports.default = Auth;
 
 /***/ })
 /******/ ]);
