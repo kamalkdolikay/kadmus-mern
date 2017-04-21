@@ -9,16 +9,21 @@ function isAuthenticated(req, res, next) {
 }
 
 module.exports = passport.use('login', new LocalStrategy({
-        usernameField: 'user'
+        usernameField: 'user',
+        passReqToCallback: true
     },
-    function(username, password, done) {
-        User.findOne({ username: username }, function(err, user) {
+    function(req, username, password, done) {
+        const userData = {
+            user: username.trim(),
+            pass: password.trim()
+        }
+        User.findOne({ username: userData.user }, function(err, user) {
             if (err) { return done(err); }
             if (!user) {
                 return done(null, false, { message: 'Incorrect username' });
             }
-            if (user.password != password) {
-                return done(null, false, { message: 'Incorrect password.' });
+            if (user.password != userData.pass) {
+                return done(null, false, { message: 'Incorrect password' });
             }
              done(null, user);
         });
