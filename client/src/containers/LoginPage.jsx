@@ -49,12 +49,18 @@ class LoginPage extends React.Component{
             }
             else{
                 console.log("xhr2", xhr.response.message)
-                //const errors = xhr.response.errors ? xhr.response.errors : {}
-                
-
-                this.setState({
-                    errors : xhr.response.message
-                })
+                if(xhr.response.message == 'Incorrect username'){
+                    this.setState({ errors: xhr.response.message })
+                }
+                if(xhr.response.message == 'Incorrect password'){
+                    this.setState({ errors: xhr.response.message })
+                }
+                if(xhr.response.errors.password == 'Please provide your password'){
+                    this.setState({ errors : xhr.response.errors.password })
+                }
+                if(xhr.response.errors.user == 'Please provide your name'){
+                    this.setState({ errors : xhr.response.errors.user })
+                }
             }
         })
         xhr.send(formData)
