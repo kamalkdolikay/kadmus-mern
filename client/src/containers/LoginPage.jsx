@@ -2,6 +2,7 @@ import React from 'react';
 import createReactClass from 'create-react-class'; //deprecated: supported module
 import { Jumbotron, Button } from 'react-bootstrap';
 import LoginForm from '../components/LoginForm.jsx';
+import Auth from '../modules/Auth.js';
 
 class LoginPage extends React.Component{
     constructor(props){
@@ -40,15 +41,19 @@ class LoginPage extends React.Component{
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
         xhr.responseType = 'json'
         xhr.addEventListener('load', () => {
-            console.log("xhr", xhr)
+            console.log("xhr", xhr.response.token)
             if(xhr.status === 200){
                 this.setState({
                     errors: 'logged in'
                 })
+
+                Auth.authenticateUser(xhr.response.token)
+                console.log(Auth.getToken())
+
                 console.log("the form is valid");
             }
             else{
-                console.log("xhr2", xhr.response.message)
+                //console.log("xhr2", xhr.response.message)
                 if(xhr.response.message == 'Incorrect username'){
                     this.setState({ errors: xhr.response.message })
                 }
