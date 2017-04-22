@@ -1,19 +1,28 @@
 class Auth {
 
-  static authenticateUser(token) {
+  static saveToken(token) {
     localStorage.setItem('token', token);
+  }
+
+  static getToken() {
+    return localStorage.getItem('token');
   }
 
   static isUserAuthenticated() {
     return localStorage.getItem('token') !== null;
   }
 
-  static deauthenticateUser() {
-    localStorage.removeItem('token');
+  static currentUser() {
+    let token = Auth.getToken();
+    if (token) {
+        var payload = JSON.parse(window.atob(token.split('.')[1]));
+
+        return payload;
+    }
   }
 
-  static getToken() {
-    return localStorage.getItem('token');
+  static logOut() {
+    localStorage.removeItem('token');
   }
 
 }
