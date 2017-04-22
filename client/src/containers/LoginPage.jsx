@@ -18,7 +18,7 @@ class LoginPage extends React.Component{
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-    
+
     handleChange(event){
         const field = event.target.name;
         const user = this.state.user;
@@ -47,8 +47,9 @@ class LoginPage extends React.Component{
                     errors: 'logged in'
                 })
 
-                Auth.authenticateUser(xhr.response.token)
+                Auth.saveToken(xhr.response.token)
                 console.log(Auth.getToken())
+                console.log(Auth.currentUser())
 
                 console.log("the form is valid");
             }
