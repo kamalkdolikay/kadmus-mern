@@ -152,24 +152,20 @@ const routes = [
     component: Base
   },
   {
-    path: '/repos/:name',
-    component: Repo
-  },
-  {
-    path: '/topics',
-    component: Topics
-  },
-  {
-    path: '/protected',
-    component: Protected
-  },
-  {
     path: '/login',
     component: LoginPage
   },
   {
     path:'/signup',
     component: SignUpForm
+  },
+  {
+    path: '/logout',
+    render: withRouter(({ history }) => {
+      return(
+        Auth.logOut(),history.push('/')
+      )
+    })
   }
 ]
 
