@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link, IndexLink} from 'react-router-dom';
 import { Navbar, NavItem, NavDropDown, MenuItem, Nav, NavDropdown, Jumbotron, Button} from 'react-bootstrap';
+import Auth from '../modules/Auth.js';
 
 const Base = ({ children }) => (
     <div>
@@ -24,10 +25,16 @@ const Base = ({ children }) => (
                 <MenuItem eventKey={3.3}>Separated link</MenuItem>
                 </NavDropdown>
             </Nav>
-            <Nav pullRight>
-                <NavItem eventKey={1}><Link to="/login">Log In</Link></NavItem>
-                <NavItem eventKey={2}><Link to="/signup">Signup</Link></NavItem>
-            </Nav>
+            {Auth.isUserAuthenticated() ? (
+                <Nav pullRight>
+                    <NavItem eventKey={1}><Link to="/logout">Logout</Link></NavItem>
+                </Nav>
+            ) : (
+                <Nav pullRight>
+                    <NavItem eventKey={1}><Link to="/login">Log In</Link></NavItem>
+                    <NavItem eventKey={2}><Link to="/signup">Signup</Link></NavItem>
+                </Nav>
+            )}
             </Navbar.Collapse>
         </Navbar>
 
