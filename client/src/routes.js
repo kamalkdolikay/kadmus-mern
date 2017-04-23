@@ -149,13 +149,7 @@ const NoMatch = ({ location }) => (
 const routes = [
   {
     path: '/',
-    component: () => {
-        if (Auth.isUserAuthenticated()) {
-          callback(null, Base);
-        } else {
-          callback(null, Base);
-        }
-      }
+    component: Base
   },
   {
     path: '/repos/:name',
