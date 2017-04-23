@@ -4,6 +4,8 @@ import createReactClass from 'create-react-class'; //deprecated: supported modul
 import About from './about.jsx';
 import Base from './components/Base.jsx';
 import LoginPage from './containers/LoginPage.jsx';
+import DashboardPage from './containers/DashboardPage.jsx';
+import Auth from './modules/Auth.js';
 import SignUpForm from './components/SignUpForm.jsx';
 
 const Repos = () => (
@@ -147,7 +149,13 @@ const NoMatch = ({ location }) => (
 const routes = [
   {
     path: '/',
-    component: Base
+    component: () => {
+        if (Auth.isUserAuthenticated()) {
+          callback(null, Base);
+        } else {
+          callback(null, Base);
+        }
+      }
   },
   {
     path: '/repos/:name',
