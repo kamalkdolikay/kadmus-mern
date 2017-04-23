@@ -48,8 +48,8 @@ class LoginPage extends React.Component{
                 })
 
                 Auth.saveToken(xhr.response.token)
-                console.log(Auth.getToken())
-                console.log(Auth.currentUser())
+                //console.log(Auth.getToken())
+                //console.log(Auth.currentUser())
 
                 console.log("the form is valid");
             }
