@@ -35,8 +35,13 @@ router.post('/login', function(req, res, next) {
 });
 
 router.post('/signup', (req, res) => {
-    console.log("req", req.body)
     res.send("success");
-})
+});
+
+router.get('/dashboard', (req,res) => {
+    res.status(200).json({
+        message: "You're authorized to se this this message"
+    });
+});
 
 export default router;
