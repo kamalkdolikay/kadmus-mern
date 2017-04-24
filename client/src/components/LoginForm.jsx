@@ -1,6 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class'; //deprecated: supported module
-import { Jumbotron, Button } from 'react-bootstrap';
+import { Jumbotron, Button, Form, FormGroup, Col, ControlLabel, FormControl, Checkbox } from 'react-bootstrap';
 
 const LoginForm = ({
     onSubmit,
@@ -8,20 +8,45 @@ const LoginForm = ({
     user,
     errors
 }) => (
-    <div>
-        <Jumbotron>
-            <center>
-            <h1>Login</h1>
+    <Form horizontal onSubmit={onSubmit}>
+        <FormGroup>
+            <Col componentClass={ControlLabel} sm={6}>
+                <h1>Login</h1>
+            </Col>
+        </FormGroup>
+
+        <FormGroup controlId="">
+        <Col componentClass={ControlLabel} sm={5}>
+            Username
+        </Col>
+        <Col sm={2}>
+            <FormControl type="name" placeholder="Name" name="name" value={user.name} onChange={onChange} />
+        </Col>
+        </FormGroup>
+
+        <FormGroup controlId="">
+        <Col componentClass={ControlLabel} sm={5}>
+            Password
+        </Col>
+        <Col sm={2}>
+            <FormControl type="password" placeholder="Password" name="password" value={user.password} onChange={onChange} />
+        </Col>
+        </FormGroup>
+
+        <FormGroup>
+        <Col smOffset={5} sm={2}>
+            <Button type="submit">
+            Sign in
+            </Button>
+        </Col>
+        </FormGroup>
+
+        <FormGroup>
+        <Col smOffset={5} sm={2}>
             {errors}
-            <form onSubmit={onSubmit}>
-                <input type="text" name="name" value={user.name} onChange={onChange} placeholder="username" /><br />
-                <input type="password" name="password" value={user.password} onChange={onChange} placeholder="password"/><br />
-                <Button bsStyle="primary" type="submit">Submit</Button>
-            </form>
-            <p></p>
-            </center>
-        </Jumbotron>
-    </div>
+        </Col>
+        </FormGroup>
+    </Form>
 )
  
 export default LoginForm

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Jumbotron ,Button } from 'react-bootstrap';
+import { Jumbotron ,Button, Form, FormGroup, Col, ControlLabel, FormControl, Checkbox } from 'react-bootstrap';
 
 class SignUpForm extends React.Component {
     constructor(props){
@@ -46,19 +46,45 @@ class SignUpForm extends React.Component {
 
     render(){
         return(
-            <div>
-                <Jumbotron>
-                    <center>
-                    <h1>Signup</h1>
-                    <form onSubmit={this.handleSubmit}>
-                        <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="username" /><br />
-                        <input type="password" placeholder="password" /><br />
-                        <Button bsStyle="primary" type="submit">Submit</Button>
-                    </form>
-                    <p></p>
-                    </center>
-                </Jumbotron>
-            </div>   
+    <Form horizontal>
+        <FormGroup>
+            <Col componentClass={ControlLabel} smOffset={1} sm={5}>
+                <h1>Signup</h1>
+            </Col>
+        </FormGroup>
+
+        <FormGroup controlId="">
+        <Col componentClass={ControlLabel} sm={5}>
+            Username
+        </Col>
+        <Col sm={2}>
+            <FormControl type="name" placeholder="Name" name="name" value="" />
+        </Col>
+        </FormGroup>
+
+        <FormGroup controlId="">
+        <Col componentClass={ControlLabel} sm={5}>
+            Password
+        </Col>
+        <Col sm={2}>
+            <FormControl type="password" placeholder="Password" name="password" value="" />
+        </Col>
+        </FormGroup>
+
+        <FormGroup>
+        <Col smOffset={5} sm={2}>
+            <Button type="submit">
+            Sign in
+            </Button>
+        </Col>
+        </FormGroup>
+
+        <FormGroup>
+        <Col smOffset={5} sm={2}>
+            
+        </Col>
+        </FormGroup>
+    </Form> 
         )
     }
 }

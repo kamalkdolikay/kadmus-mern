@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link, IndexLink} from 'react-router-dom';
 import { Navbar, NavItem, NavDropDown, MenuItem, Nav, NavDropdown, Jumbotron, Button} from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import Auth from '../modules/Auth.js';
 
 const Base = ({ children }) => (
-    <div>
         <Navbar inverse collapseOnSelect>
             <Navbar.Header>
             <Navbar.Brand>
@@ -15,7 +15,9 @@ const Base = ({ children }) => (
             </Navbar.Header>
             <Navbar.Collapse>
             <Nav>
-                <NavItem eventKey={1} href="#">Link</NavItem>
+                <LinkContainer to="/todo">
+                    <NavItem eventKey={1}>Todo</NavItem>
+                </LinkContainer>
                 <NavItem eventKey={2} href="#">Link</NavItem>
                 <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
                 <MenuItem eventKey={3.1}>Action</MenuItem>
@@ -27,18 +29,22 @@ const Base = ({ children }) => (
             </Nav>
             {Auth.isUserAuthenticated() ? (
                 <Nav pullRight>
-                    <NavItem eventKey={1}><Link to="/logout">Logout</Link></NavItem>
+                    <LinkContainer to="/logout">
+                        <NavItem eventKey={1}>Logout</NavItem>
+                    </LinkContainer>
                 </Nav>
             ) : (
                 <Nav pullRight>
-                    <NavItem eventKey={1}><Link to="/login">Log In</Link></NavItem>
-                    <NavItem eventKey={2}><Link to="/signup">Signup</Link></NavItem>
+                    <LinkContainer to="/login">
+                        <NavItem eventKey={1}>Log In</NavItem>
+                    </LinkContainer>
+                    <LinkContainer to="/signup">
+                        <NavItem eventKey={2}>Signup</NavItem>
+                    </LinkContainer>
                 </Nav>
             )}
             </Navbar.Collapse>
         </Navbar>
-
-    </div>
 )
 
 
