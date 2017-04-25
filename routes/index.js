@@ -38,6 +38,11 @@ router.post('/signup', (req, res) => {
     res.send("success");
 });
 
+router.post('/register2', (req, res) => {
+    console.log("r.body", req.body)
+    res.json({"code":200,"success":"user registered sucessfully"});
+});
+
 router.get('/dashboard', (req,res) => {
     res.status(200).json({
         message: "You're authorized to se this this message"
