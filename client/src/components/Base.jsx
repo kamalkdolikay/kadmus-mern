@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link, IndexLink} from 'react-router-dom';
 import { Navbar, NavItem, NavDropDown, MenuItem, Nav, NavDropdown, Jumbotron, Button} from 'react-bootstrap';
+import {MuiThemeProvider} from 'material-ui';
 import { LinkContainer } from 'react-router-bootstrap';
 import Auth from '../modules/Auth.js';
 
-const Base = ({ children }) => (
+const Base = () => (
         <Navbar inverse collapseOnSelect>
             <Navbar.Header>
             <Navbar.Brand>
@@ -18,7 +19,9 @@ const Base = ({ children }) => (
                 <LinkContainer to="/todo">
                     <NavItem eventKey={1}>Todo</NavItem>
                 </LinkContainer>
-                <NavItem eventKey={2} href="#">Link</NavItem>
+                <LinkContainer to="/login2">
+                    <NavItem eventKey={2} href="#">login2</NavItem>
+                </LinkContainer>
                 <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
                 <MenuItem eventKey={3.1}>Action</MenuItem>
                 <MenuItem eventKey={3.2}>Another action</MenuItem>
