@@ -8,6 +8,8 @@ import DashboardPage from './containers/DashboardPage.jsx';
 import Auth from './modules/Auth.js';
 import SignUpForm from './components/SignUpForm.jsx';
 import Todo from './components/Todo.jsx';
+import LoginScreen from './components/LoginScreen.js';
+
 
 const routes = [
   {
@@ -33,6 +35,10 @@ const routes = [
   {
     path: '/todo',
     component: Todo
+  },
+  {
+    path: '/login2',
+    component: LoginScreen
   }
 ]
 
