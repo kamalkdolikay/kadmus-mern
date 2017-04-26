@@ -9,6 +9,7 @@ import Auth from './modules/Auth.js';
 import SignUpForm from './components/SignUpForm.jsx';
 import Todo from './components/Todo.jsx';
 import LoginScreen from './components/LoginScreen.js';
+import LoginScreen2 from './components/LoginScreen2.jsx';
 
 
 const routes = [
@@ -39,6 +40,10 @@ const routes = [
   {
     path: '/login2',
     component: LoginScreen
+  },
+  {
+    path: '/login3',
+    component: LoginScreen2
   }
 ]
 
